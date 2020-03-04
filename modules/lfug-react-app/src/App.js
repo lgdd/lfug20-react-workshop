@@ -4,6 +4,7 @@ import '@clayui/css/lib/css/atlas.css';
 import BlogList from './components/BlogList';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
+import ClayAlert from '@clayui/alert';
 // Don't forget to create a file '.env.local'
 // and to add keys & values that we're using in this app
 // according to your environment.
@@ -14,8 +15,16 @@ export default function App() {
     <ApolloProvider client={createApolloClient()}>
       <div className="lfug-react-app">
         <div className="container">
-          <h1 className="text-center mb-4">Blogs</h1>
-          <BlogList />
+          {isSignedIn() ? (
+            <div>
+              <h1 className="text-center mb-4">Blogs</h1>
+              <BlogList />
+            </div>
+          ) : (
+            <ClayAlert displayType="warning" title="Attention:">
+              You need to sign in to see this content.
+            </ClayAlert>
+          )}
         </div>
       </div>
     </ApolloProvider>
@@ -25,11 +34,12 @@ export default function App() {
 function createApolloClient() {
   let endpoint;
   // outside Liferay Portal
-  if (process.env.NODE_ENV === "development") {
+  if (process.env.NODE_ENV === 'development') {
     const user = process.env.REACT_APP_LIFERAY_USER;
     const password = process.env.REACT_APP_LIFERAY_PASSWORD;
     const base64credentials = new Buffer(`${user}:${password}`).toString(
-      "base64");
+      'base64'
+    );
 
     endpoint =
       process.env.REACT_APP_LIFERAY_HOST +
@@ -38,7 +48,7 @@ function createApolloClient() {
     return new ApolloClient({
       uri: endpoint,
       headers: {
-        Authorization: "Basic " + base64credentials
+        Authorization: 'Basic ' + base64credentials
       }
     });
   }
@@ -49,8 +59,15 @@ function createApolloClient() {
 
   return new ApolloClient({
     uri: endpoint,
-    credentials: "same-origin"
+    credentials: 'same-origin'
   });
+}
+
+export function isSignedIn() {
+  if (process.env.NODE_ENV === 'development') {
+    return true;
+  }
+  return Liferay().ThemeDisplay.isSignedIn();
 }
 
 export function Liferay() {

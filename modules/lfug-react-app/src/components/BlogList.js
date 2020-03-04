@@ -1,28 +1,44 @@
 import React from 'react';
 import Blog from './Blog';
+import { useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
+
+const SITE_ID = 20124;
+
+const ALL_BLOGS = gql`
+  query {
+    blogPostings(siteId: ${SITE_ID}) {
+      items {
+        id
+        headline
+        articleBody
+        datePublished
+        creator {
+          name
+        }
+      }
+      page
+      totalCount
+    }
+  }
+`;
 
 export default function BlogList() {
-  const title = 'Lorem Ipsum';
-  const author = 'John Doe';
-  const body = `
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Integer et consectetur elit. Fusce ornare leo nec auctor varius.
-      Fusce vulputate magna at erat vehicula eleifend.
-      Curabitur blandit rutrum ipsum, in sodales ligula porta porttitor.
-      Praesent velit purus, tempus tincidunt orci sit amet, sodales molestie eros.
-      Mauris vel tellus nisl. Maecenas et posuere tortor.
-      Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-      Nullam lobortis enim eget nunc rhoncus, vitae porttitor lectus auctor.
-      Donec hendrerit mauris vel tellus fringilla, id lobortis ex mollis.
-      Quisque vel lorem convallis ex rhoncus luctus quis non sapien.
-      Etiam ultrices arcu a felis fringilla rhoncus. Etiam felis quam, laoreet non euismod ut, posuere ut magna.
-      Etiam dictum mi sed urna egestas malesuada ac suscipit nulla.
-      `;
-  return (
-    <div>
-      <Blog title={title} author={author} body={body} />
-      <Blog title={title} author={author} body={body} />
-      <Blog title={title} author={author} body={body} />
-    </div>
+  const { loading, error, data } = useQuery(ALL_BLOGS);
+
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
+
+  const blogs = data.blogPostings.items.map(
+    ({ id, headline, articleBody, creator }) => (
+      <Blog
+        key={id}
+        title={headline}
+        author={creator.name}
+        body={articleBody}
+      />
+    )
   );
+
+  return <div className="row">{blogs}</div>;
 }

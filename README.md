@@ -25,25 +25,25 @@ In each card, we want to diplay the title, subtitle, author and date. It should 
     - [Git](#git)
     - [Overview](#overview)
   - [Cheat Sheet](#cheat-sheet)
-      - [Using a local archive to initialize Liferay Bundle:](#using-a-local-archive-to-initialize-liferay-bundle)
-      - [Initialize Liferay Bundle:](#initialize-liferay-bundle)
-      - [Start Liferay:](#start-liferay)
-      - [Stop Liferay:](#stop-liferay)
-      - [Display Liferay logs:](#display-liferay-logs)
-      - [Create React app:](#create-react-app)
-      - [Start React app:](#start-react-app)
-      - [Add dotenv dependencies:](#add-dotenv-dependencies)
-      - [Add environment variables:](#add-environment-variables)
-      - [Access environment variables:](#access-environment-variables)
-      - [Add Clay dependencies:](#add-clay-dependencies)
-      - [Add GraphQL & Apollo dependencies:](#add-graphql--apollo-dependencies)
+      - [Using a local archive to initialize Liferay Bundle](#using-a-local-archive-to-initialize-liferay-bundle)
+      - [Initialize Liferay Bundle](#initialize-liferay-bundle)
+      - [Start Liferay](#start-liferay)
+      - [Stop Liferay](#stop-liferay)
+      - [Display Liferay logs](#display-liferay-logs)
+      - [Create React app](#create-react-app)
+      - [Start React app](#start-react-app)
+      - [Add dotenv dependencies](#add-dotenv-dependencies)
+      - [Add environment variables](#add-environment-variables)
+      - [Access environment variables](#access-environment-variables)
+      - [Add Clay dependencies](#add-clay-dependencies)
+      - [Add GraphQL & Apollo dependencies](#add-graphql--apollo-dependencies)
       - [Truncate text](#truncate-text)
-      - [Add Moment.js dependencies:](#add-momentjs-dependencies)
-      - [Adapt your app for Liferay:](#adapt-your-app-for-liferay)
-      - [Build your app for Liferay:](#build-your-app-for-liferay)
-      - [Deploy your app to Liferay:](#deploy-your-app-to-liferay)
-      - [Encode credentials to Base64:](#encode-credentials-to-base64)
-      - [Access Liferay JavaScript object:](#access-liferay-javascript-object)
+      - [Add Moment.js dependencies](#add-momentjs-dependencies)
+      - [Adapt your app for Liferay](#adapt-your-app-for-liferay)
+      - [Build your app for Liferay](#build-your-app-for-liferay)
+      - [Deploy your app to Liferay](#deploy-your-app-to-liferay)
+      - [Encode credentials to Base64](#encode-credentials-to-base64)
+      - [Access Liferay JavaScript object](#access-liferay-javascript-object)
   - [Docs](#docs)
   - [License](#license)
 
@@ -112,7 +112,7 @@ You'll a list of useful commands in the [Cheat Sheet](#cheat-sheet) section to h
 
 ## Cheat Sheet
 
-#### Using a local archive to initialize Liferay Bundle:
+#### Using a local archive to initialize Liferay Bundle
 
 If you have already downloaded the [Liferay CE 7.2 GA2 Tomcat Bundle](https://sourceforge.net/projects/lportal/files/Liferay%20Portal/7.2.1%20GA2/), you can customise your Gradle properties to avoid the next step to download it again. Create a file named `gradle-local.properties` to the root folder and add:
 
@@ -123,7 +123,7 @@ liferay.workspace.bundle.url=file:///home/user/Downloads/liferay-ce-portal-tomca
 > Where `/home/user/Downloads/liferay-ce-portal-tomcat-7.2.1-ga2-20191111141448326.tar.gz` is the location of your downloaded bundle.
 
 
-#### Initialize Liferay Bundle:
+#### Initialize Liferay Bundle
 
 ```shell
 blade gw initBundle
@@ -131,7 +131,7 @@ blade gw initBundle
 ./gradlew initBundle
 ```
 
-#### Start Liferay:
+#### Start Liferay
 
 ```shell
 blade server start
@@ -139,7 +139,7 @@ blade server start
 ./bundles/tomcat-9.0.17/bin/startup.sh
 ```
 
-#### Stop Liferay:
+#### Stop Liferay
 
 ```shell
 blade server stop
@@ -147,19 +147,19 @@ blade server stop
 ./bundles/tomcat-9.0.17/bin/shutdown.sh
 ```
 
-#### Display Liferay logs:
+#### Display Liferay logs
 
 ```shell
 tail -f bundles/tomcat-9.0.17/logs/catalina.out
 ```
 
-#### Create React app:
+#### Create React app
 
 ```shell
 npx create-react-app modules/lfug-react-app
 ```
 
-#### Start React app:
+#### Start React app
 
 ```shell
 yarn start
@@ -167,7 +167,7 @@ yarn start
 npm run start
 ```
 
-#### Add dotenv dependencies:
+#### Add dotenv dependencies
 
 ```shell
 yarn add dotenv
@@ -177,7 +177,7 @@ npm install dotenv
 
 > See [dotenv](https://github.com/motdotla/dotenv#dotenv).
 
-#### Add environment variables:
+#### Add environment variables
 
 ```properties
 REACT_APP_LIFERAY_USER='test@liferay.com'
@@ -186,7 +186,7 @@ REACT_APP_LIFERAY_HOST='http://localhost:8080'
 REACT_APP_LIFERAY_GRAPHQL_ENDPOINT='/o/graphql'
 ```
 
-#### Access environment variables:
+#### Access environment variables
 
 ```jsx
 const nodeEnv = process.env.NODE_ENV;
@@ -196,7 +196,7 @@ const host = process.env.REACT_APP_LIFERAY_HOST;
 const endpoint = process.env.REACT_APP_LIFERAY_GRAPHQL_ENDPOINT;
 ```
 
-#### Add Clay dependencies:
+#### Add Clay dependencies
 
 ```shell
 yarn add @clayui/css @clayui/alert @clayui/button @clayui/card @clayui/loading-indicator
@@ -204,7 +204,7 @@ yarn add @clayui/css @clayui/alert @clayui/button @clayui/card @clayui/loading-i
 npm install @clayui/css @clayui/alert @clayui/button @clayui/card @clayui/loading-indicator
 ```
 
-#### Add GraphQL & Apollo dependencies:
+#### Add GraphQL & Apollo dependencies
 
 ```shell
 yarn add graphql @apollo/react-hooks apollo-boost apollo-link-context
@@ -234,7 +234,7 @@ import TextTruncate from 'react-text-truncate';
 ```
 > We will truncate the blog post body.
 
-#### Add Moment.js dependencies:
+#### Add Moment.js dependencies
 
 ```shell
 yarn add moment react-moment
@@ -242,13 +242,13 @@ yarn add moment react-moment
 npm install moment react-moment
 ```
 
-#### Adapt your app for Liferay:
+#### Adapt your app for Liferay
 
 ```shell
 yo liferay-js:adapt
 ```
 
-#### Build your app for Liferay:
+#### Build your app for Liferay
 
 ```shell
 yarn build:liferay
@@ -256,7 +256,7 @@ yarn build:liferay
 npm run build:liferay
 ```
 
-#### Deploy your app to Liferay:
+#### Deploy your app to Liferay
 
 ```shell
 yarn deploy:liferay
@@ -264,7 +264,7 @@ yarn deploy:liferay
 npm run deploy:liferay
 ```
 
-#### Encode credentials to Base64:
+#### Encode credentials to Base64
 
 JavaScript:
 
@@ -286,7 +286,7 @@ openssl base64 <<< test@liferay.com:test
 > all communication is made through HTTPS, which encrypts the entire message
 > (including headers).
 
-#### Access Liferay JavaScript object:
+#### Access Liferay JavaScript object
 
 ```jsx
 export function Liferay() {

@@ -4,8 +4,12 @@ import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import ClayLoadingIndicator from '@clayui/loading-indicator';
 import ClayAlert from '@clayui/alert';
+import { Liferay } from '../App';
 
-const SITE_ID = 20124;
+const SITE_ID =
+  process.env.NODE_ENV === 'development'
+    ? 20124
+    : Liferay().ThemeDisplay.getSiteGroupId();
 
 const ALL_BLOGS = gql`
   query {

@@ -1,0 +1,60 @@
+{
+  "name": "lfug-react-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@apollo/react-hooks": "^3.1.3",
+    "@clayui/alert": "^3.3.0",
+    "@clayui/button": "^3.3.0",
+    "@clayui/card": "^3.1.0",
+    "@clayui/css": "^3.7.0",
+    "@clayui/loading-indicator": "^3.0.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "apollo-boost": "^0.4.7",
+    "apollo-link-context": "^1.0.19",
+    "graphql": "^14.6.0",
+    "moment": "^2.24.0",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-moment": "^0.9.7",
+    "react-scripts": "3.4.0",
+    "react-text-truncate": "^0.16.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "build:liferay": "lnbs-build",
+    "deploy:liferay": "yarn run build:liferay && lnbs-deploy"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "liferay-npm-build-support": "^2.18.2",
+    "liferay-npm-bundler": "^2.18.2",
+    "liferay-npm-bundler-preset-create-react-app": "^2.18.2"
+  },
+  "portlet": {
+    "com.liferay.portlet.display-category": "category.sample",
+    "javax.portlet.name": "lfugreactapp",
+    "javax.portlet.security-role-ref": "power-user,user",
+    "javax.portlet.resource-bundle": "content.Language",
+    "com.liferay.portlet.instanceable": true
+  }
+}

@@ -49,12 +49,13 @@ export default function BlogList() {
   }
 
   const blogs = data.blogPostings.items.map(
-    ({ id, headline, articleBody, creator }) => (
+    ({ id, headline, articleBody, creator, datePublished }) => (
       <Blog
         key={id}
         title={headline}
         author={creator.name}
         body={articleBody}
+        datePublished={datePublished}
       />
     )
   );

@@ -10,42 +10,70 @@ In each card, we want to diplay the title, subtitle, author and date. It should 
 
 ![result-example](doc/result-example.jpg)
 
+## Getting Started
+
+### From scratch
+To do this workshop step by step, clone this repo on `develop` using HTTPS or SSH:
+
+```shell
+git clone -b develop https://github.com/lgdd/lfug20-react-workshop.git
+# or
+git clone -b develop git@github.com:lgdd/lfug20-react-workshop.git
+```
+
+Then, verify the [requirements](#requirements) and go the [steps section](#steps).
+
+### Final result
+
+If you want to try the final result, clone this repo on `master` using HTTPS or SSH:
+
+```shell
+git clone https://github.com/lgdd/lfug20-react-workshop.git
+# or
+git clone git@github.com:lgdd/lfug20-react-workshop.git
+```
+
+Then, verify the [requirements](#requirements). [Initialize your Liferay bundle](#initialize-liferay-bundle) and [start it](#start-liferay). [Add some blog posts](#https://portal.liferay.dev/docs/7-2/user/-/knowledge_base/u/adding-blog-entries) or generate them with the [Dummy Factory](#dummy-factory-optional) plugin. Go to `modules/lfug-react-app`, create a file named `.env.local` and [add your environment variables](#add-environment-variables). Run `yarn` or `npm install`.
+Finally to test the app you can run `yarn start` or `npm run start` and it should open automatically a page to `http://localhost:3000` when started. You can also deploy this app to Liferay using `yarn deploy:liferay` or `npm run deploy:liferay`, login to your Liferay instance and [add `lfug-react-app` widget to a page](https://portal.liferay.dev/docs/7-2/user/-/knowledge_base/u/creating-widget-pages#adding-widgets-to-a-page) (e.g. _Home_ by default).
+
 ## Table of Contents
 
-- [LFUG #20 Meetup | React Workshop](#lfug-20-meetup--react-workshop)
-  - [Table of Contents](#table-of-contents)
-  - [Requirements](#requirements)
-    - [System](#system)
-    - [Tools](#tools)
-      - [Blade (optional)](#blade-optional)
-      - [Yeoman](#yeoman)
-      - [Liferay JS Yeoman Generator](#liferay-js-yeoman-generator)
-      - [Dummy Factory (optional)](#dummy-factory-optional)
-  - [Steps](#steps)
-    - [Git](#git)
-    - [Overview](#overview)
-  - [Cheat Sheet](#cheat-sheet)
-      - [Using a local archive to initialize Liferay Bundle](#using-a-local-archive-to-initialize-liferay-bundle)
-      - [Initialize Liferay Bundle](#initialize-liferay-bundle)
-      - [Start Liferay](#start-liferay)
-      - [Stop Liferay](#stop-liferay)
-      - [Display Liferay logs](#display-liferay-logs)
-      - [Create React app](#create-react-app)
-      - [Start React app](#start-react-app)
-      - [Add dotenv dependencies](#add-dotenv-dependencies)
-      - [Add environment variables](#add-environment-variables)
-      - [Access environment variables](#access-environment-variables)
-      - [Add Clay dependencies](#add-clay-dependencies)
-      - [Add GraphQL & Apollo dependencies](#add-graphql--apollo-dependencies)
-      - [Truncate text](#truncate-text)
-      - [Add Moment.js dependencies](#add-momentjs-dependencies)
-      - [Adapt your app for Liferay](#adapt-your-app-for-liferay)
-      - [Build your app for Liferay](#build-your-app-for-liferay)
-      - [Deploy your app to Liferay](#deploy-your-app-to-liferay)
-      - [Encode credentials to Base64](#encode-credentials-to-base64)
-      - [Access Liferay JavaScript object](#access-liferay-javascript-object)
-  - [Docs](#docs)
-  - [License](#license)
+ - [Getting Started](#getting-started)
+   - [From scratch](#from-scratch)
+   - [Final result](#final-result)
+ - [Table of Contents](#table-of-contents)
+ - [Requirements](#requirements)
+   - [System](#system)
+   - [Tools](#tools)
+     - [Blade (optional)](#blade-optional)
+     - [Yeoman](#yeoman)
+     - [Liferay JS Yeoman Generator](#liferay-js-yeoman-generator)
+     - [Dummy Factory (optional)](#dummy-factory-optional)
+ - [Steps](#steps)
+   - [Git](#git)
+   - [Overview](#overview)
+ - [Cheat Sheet](#cheat-sheet)
+     - [Using a local archive to initialize Liferay Bundle](#using-a-local-archive-to-initialize-liferay-bundle)
+     - [Initialize Liferay Bundle](#initialize-liferay-bundle)
+     - [Start Liferay](#start-liferay)
+     - [Stop Liferay](#stop-liferay)
+     - [Display Liferay logs](#display-liferay-logs)
+     - [Create React app](#create-react-app)
+     - [Start React app](#start-react-app)
+     - [Add dotenv dependencies](#add-dotenv-dependencies)
+     - [Add environment variables](#add-environment-variables)
+     - [Access environment variables](#access-environment-variables)
+     - [Add Clay dependencies](#add-clay-dependencies)
+     - [Add GraphQL & Apollo dependencies](#add-graphql--apollo-dependencies)
+     - [Truncate text](#truncate-text)
+     - [Add Moment.js dependencies](#add-momentjs-dependencies)
+     - [Adapt your app for Liferay](#adapt-your-app-for-liferay)
+     - [Build your app for Liferay](#build-your-app-for-liferay)
+     - [Deploy your app to Liferay](#deploy-your-app-to-liferay)
+     - [Encode credentials to Base64](#encode-credentials-to-base64)
+     - [Access Liferay JavaScript object](#access-liferay-javascript-object)
+ - [Docs](#docs)
+ - [License](#license)
 
 ## Requirements
 
@@ -84,6 +112,7 @@ curl -o bundles/deploy/liferay.dummy.factory-7.2.3.jar https://raw.githubusercon
 # or
 wget -O bundles/deploy/liferay.dummy.factory-7.2.3.jar https://raw.githubusercontent.com/yasuflatland-lf/liferay-dummy-factory/master/latest/liferay.dummy.factory-7.2.3.jar
 ```
+
 > It will help you test your app by generating dummy Blog posts.
 > To access to this plugin in Liferay, go to `Control Panel > Apps > Dummy Factory`.
 
@@ -120,8 +149,8 @@ If you have already downloaded the [Liferay CE 7.2 GA2 Tomcat Bundle](https://so
 # Example
 liferay.workspace.bundle.url=file:///home/user/Downloads/liferay-ce-portal-tomcat-7.2.1-ga2-20191111141448326.tar.gz
 ```
-> Where `/home/user/Downloads/liferay-ce-portal-tomcat-7.2.1-ga2-20191111141448326.tar.gz` is the location of your downloaded bundle.
 
+> Where `/home/user/Downloads/liferay-ce-portal-tomcat-7.2.1-ga2-20191111141448326.tar.gz` is the location of your downloaded bundle.
 
 #### Initialize Liferay Bundle
 
@@ -215,6 +244,7 @@ npm install graphql @apollo/react-hooks apollo-boost apollo-link-context
 #### Truncate text
 
 React text truncate:
+
 ```shell
 yarn add react-text-truncate
 # or
@@ -222,6 +252,7 @@ npm install react-text-truncate
 ```
 
 Snippet:
+
 ```jsx
 import TextTruncate from 'react-text-truncate';
 
@@ -230,8 +261,9 @@ import TextTruncate from 'react-text-truncate';
   element="span"
   truncateText="…"
   text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas hendrerit urna a dolor blandit suscipit. Aenean non turpis nec ex vestibulum tempor."
-/>
+/>;
 ```
+
 > We will truncate the blog post body.
 
 #### Add Moment.js dependencies

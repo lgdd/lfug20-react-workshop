@@ -82,6 +82,7 @@ Finally to test the app you can run `yarn start` or `npm run start` and it shoul
 - **JDK** [1.8](https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/downloads-list.html)
 - **Node.js** >= 10.18
 - **npm** >= 6.13 _or_ **Yarn** >= 1.22
+> If you have any issue with permissions or to manage multiple Node.js / npm versions, I would recommend that you use [nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
 ### Tools
 

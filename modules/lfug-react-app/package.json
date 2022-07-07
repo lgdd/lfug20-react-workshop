@@ -15,7 +15,7 @@
     "apollo-boost": "^0.4.7",
     "apollo-link-context": "^1.0.19",
     "graphql": "^14.6.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-moment": "^0.9.7",
